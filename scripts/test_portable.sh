@@ -6,6 +6,7 @@ APP="${ANASING_TEST_APP:-$PWD/dist/portable/Anasing.app}"
 mkdir -p artifacts
 codesign --verify --deep --strict "$APP"
 "$APP/Contents/MacOS/Anasing" --smoke-test
+"$APP/Contents/MacOS/Anasing" --file-access-test
 "$APP/Contents/MacOS/Anasing" --editor-test
 "$APP/Contents/MacOS/Anasing" --pipeline-test
 "$APP/Contents/MacOS/Anasing" --pdf-feedback-test

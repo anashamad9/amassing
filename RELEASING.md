@@ -1,14 +1,14 @@
 # Publishing Anasing on GitHub
 
-The prepared **0.6.1-beta.1** bundle is self-contained for **Apple silicon, macOS 26.6.2+**. It is a development beta with an ad-hoc signature. It is **not** Apple-notarized. No Developer ID signing identity was installed on the machine that prepared this package.
+The prepared **0.6.2-beta.1** bundle is self-contained for **Apple silicon, macOS 26.6.2+**. It is a development beta with an ad-hoc signature. It is **not** Apple-notarized. No Developer ID signing identity was installed on the machine that prepared this package.
 
 ## Files to upload
 
-Use GitHub's **Releases → Draft a new release**, tag `v0.6.1-beta.1`, and mark it **Pre-release**. Attach the files from `release/`:
+Use GitHub's **Releases → Draft a new release**, tag `v0.6.2-beta.1`, and mark it **Pre-release**. Attach the files from `release/`:
 
-- `Anasing-0.6.1-beta.1-arm64-unsigned.dmg`
-- `Anasing-0.6.1-beta.1-source.tar.gz`
-- `Anasing-0.6.1-beta.1-third-party-sources.tar.gz`
+- `Anasing-0.6.2-beta.1-arm64-unsigned.dmg`
+- `Anasing-0.6.2-beta.1-source.tar.gz`
+- `Anasing-0.6.2-beta.1-third-party-sources.tar.gz`
 - `SHA256SUMS.txt`
 
 Also attach the generated portable audit and test report if desired. Explain clearly that the binary is an **unsigned beta** that macOS may block. A public source repository and a test DMG are prepared; a smooth, normal public installation experience still requires Developer ID signing and notarization.

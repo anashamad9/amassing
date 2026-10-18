@@ -22,6 +22,8 @@ struct FloatFilesView:View {
 final class FileActions {
     var floats:[NSWindow]=[]
     func perform(_ action:String,urls:[URL]) {
+        let scope=SecurityScopeLease(urls);defer { withExtendedLifetime(scope) {} }
+        if ["move","airDrop","float"].contains(action),!FileAccess.shared.prepare(urls,writeBeside:action=="move") { return }
         switch action {
         case "copy": NSPasteboard.general.clearContents();NSPasteboard.general.writeObjects(urls as [NSURL]);toast("Files copied · تم نسخ الملفات")
         case "copyPath": NSPasteboard.general.clearContents();NSPasteboard.general.setString(urls.map(\.path).joined(separator:"\n"),forType:.string);toast("Paths copied · تم نسخ المسارات")
@@ -82,6 +84,7 @@ final class ConversionJob {
     let lock=NSLock()
     var process:Process?
     var cancelled=false
+    var isCancelled:Bool { lock.lock();defer { lock.unlock() };return cancelled }
     func cancel() { lock.lock();cancelled=true;let active=process;lock.unlock();if active?.isRunning == true { active?.terminate() } }
 }
 final class JobRunner {
@@ -91,6 +94,7 @@ final class JobRunner {
     var jobs:[UUID:ConversionJob]=[:]
     func cancelAll() { jobs.values.forEach { $0.cancel() } }
     func run(action:WheelAction,urls:[URL],parameters:[String:Any],completion:(([URL]?,String?)->Void)?=nil) {
+        let scope=SecurityScopeLease(urls)
         let job=ConversionJob();jobs[job.id]=job
         activityChanged?(jobs.count)
         let feedback:ActionFeedback?
@@ -106,12 +110,15 @@ final class JobRunner {
         let portable=FileManager.default.isExecutableFile(atPath:portablePython.path)
         let python=portable ? portablePython:hasBundledPackages ? URL(fileURLWithPath:"/usr/bin/python3"):root.appendingPathComponent(".venv/bin/python3")
         let engine=Bundle.main.resourceURL!.appendingPathComponent("engine/anasing_engine.py")
-        let request:[String:Any]=["action":action.id,"sources":urls.map(\.path),"parameters":parameters]
-        queue.async {
+        queue.async { [self,feedback] in
+            defer { withExtendedLifetime(scope) {} }
             var result:[String:Any]=[:]
+            var denied=false
             do {
                 guard FileManager.default.isExecutableFile(atPath:python.path) else { throw NSError(domain:"Anasing",code:1,userInfo:[NSLocalizedDescriptionKey:"The local conversion runtime is missing. Run scripts/setup.sh in the Anasing project."]) }
-                let process=Process();process.executableURL=python;process.arguments=portable ? ["-B","-I",engine.path]:[engine.path]
+                let workspace=try StagedOperation(sources:urls,cancelled:{job.isCancelled})
+                let request:[String:Any]=["action":action.id,"sources":workspace.stagedSources.map(\.path),"parameters":parameters]
+                let process=Process();process.executableURL=python;process.currentDirectoryURL=workspace.root;process.arguments=portable ? ["-B","-I",engine.path]:[engine.path]
                 var env=ProcessInfo.processInfo.environment;env["PYTHONUNBUFFERED"]="1"
                 if portable {
                     env.removeValue(forKey:"PYTHONPATH");env.removeValue(forKey:"PYTHONHOME");env.removeValue(forKey:"__PYVENV_LAUNCHER__")
@@ -138,10 +145,19 @@ final class JobRunner {
                 let response=output.fileHandleForReading.readDataToEndOfFile();process.waitUntilExit()
                 result=(try? JSONSerialization.jsonObject(with:response)) as? [String:Any] ?? [:]
                 if result.isEmpty { let details=(try? String(contentsOf:errors,encoding:.utf8)) ?? "";throw NSError(domain:"Anasing",code:1,userInfo:[NSLocalizedDescriptionKey:details.isEmpty ? "The conversion process stopped unexpectedly.":String(details.suffix(2000))]) }
-            } catch { result=["ok":false,"error":error.localizedDescription] }
+                if result["ok"] as? Bool == true {
+                    let generated=(result["outputs"] as? [String] ?? []).map { URL(fileURLWithPath:$0) }
+                    switch workspace.publish(generated,cancelled:{job.isCancelled}) {
+                    case .success(let published): result["outputs"]=published.map(\.path)
+                    case .failure(let failure):
+                        denied=FileAccess.isPermissionError(failure.cause)
+                        result=["ok":false,"error":failure.cause.localizedDescription,"outputs":failure.completed.map(\.path)]
+                    }
+                }
+            } catch { denied=FileAccess.isPermissionError(error);result=["ok":false,"error":error.localizedDescription] }
             let outputURLs=(result["outputs"] as? [String] ?? []).map { URL(fileURLWithPath:$0) }
             let preview=ActionFeedback.previewFiles(outputURLs)
-            DispatchQueue.main.async {
+            DispatchQueue.main.async { [self,feedback] in
                 self.finished(job.id)
                 if job.cancelled { FeedbackCenter.shared.cancelled(feedback);return }
                 if result["ok"] as? Bool == true {
@@ -153,7 +169,17 @@ final class JobRunner {
                     }
                 } else {
                     let message=result["error"] as? String ?? "Conversion failed"
-                    if let completion { completion(nil,message) } else { FeedbackCenter.shared.failed(feedback,message:message) }
+                    if let completion { completion(nil,message) } else {
+                        let partial=(result["outputs"] as? [String] ?? []).map { URL(fileURLWithPath:$0) }
+                        if let feedback { feedback.outputs=partial }
+                        let retry:()->Void = { [weak self,weak feedback] in
+                            guard let self,let first=urls.first,FileAccess.shared.chooseFolders(suggested:first.deletingLastPathComponent(),required:first.deletingLastPathComponent()),FileAccess.shared.prepare(urls,writeBeside:true) else { return }
+                            if let feedback { FeedbackCenter.shared.dismiss(feedback) }
+                            self.run(action:action,urls:urls,parameters:parameters)
+                        }
+                        let explanation=denied ? "Folder access is needed. Choose ‘Allow & retry’ once; permission is reused for future actions.\nيلزم السماح للمجلد مرة واحدة لإعادة المحاولة وجميع الإجراءات التالية.":message
+                        FeedbackCenter.shared.failed(feedback,message:explanation,retry:denied ? retry:nil)
+                    }
                 }
             }
         }

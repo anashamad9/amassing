@@ -1,5 +1,13 @@
 # Changelog
 
+## 0.6.2-beta.1
+
+- Fix protected-folder permission failures by processing temporary copies through the native app.
+- Remember selected folder access across actions and launches with security-scoped bookmarks.
+- Add a folder-access menu action, bilingual usage descriptions, and permission retry without losing editor settings.
+- Keep outputs beside each original, preserve collision handling and completed results, and clean private workspaces.
+- Add native staging, bookmark, collision, batch, combined-output, cancellation, and Downloads regression checks.
+
 ## 0.6.1-beta.1
 
 - Add native launch-at-login registration with a bilingual menu toggle and macOS approval handling.

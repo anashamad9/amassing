@@ -1,4 +1,4 @@
-Anasing 0.6.1-beta.1 — UNSIGNED TEST BUILD
+Anasing 0.6.2-beta.1 — UNSIGNED TEST BUILD
 أناسينغ — نسخة تجريبية غير موثقة من Apple
 
 Requires an Apple silicon Mac (M1 or newer) with macOS 26.6.2 or later.
@@ -26,6 +26,6 @@ macOS may refuse to launch an unsigned download. Do not disable Gatekeeper or ot
 The publisher must sign and notarize a release before presenting it as a normal public installer.
 هذه نسخة تجريبية غير موثقة من Apple، وقد يمنع macOS تشغيلها. لا تعطل ميزات الحماية.
 
-Source code: included as Anasing-0.6.1-beta.1-source.tar.gz on this disk.
+Source code: included as Anasing-0.6.2-beta.1-source.tar.gz on this disk.
 License: GNU AGPL version 3 only. See LICENSE.txt and third-party notices.
 لا توجد حسابات أو تحليلات استخدام؛ تتم معالجة الملفات محلياً.

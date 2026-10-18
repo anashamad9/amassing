@@ -8,9 +8,9 @@ Anasing is a small macOS background utility for file conversions and quick actio
 
 ## Download and install · التنزيل والتثبيت
 
-**Current build: 0.6.1-beta.1 — Apple silicon, macOS 26.6.2 or later.** Intel Macs and earlier macOS versions are not supported by this bundled beta.
+**Current build: 0.6.2-beta.1 — Apple silicon, macOS 26.6.2 or later.** Intel Macs and earlier macOS versions are not supported by this bundled beta.
 
-Download `Anasing-0.6.1-beta.1-arm64-unsigned.dmg` from [GitHub Releases](https://github.com/anashamad9/amassing/releases), drag **Anasing.app** into **Applications**, then open it once. The app stays in the menu bar. Its conversion engines are bundled: recipients do not need Homebrew, Xcode, Python, or LibreOffice installed separately.
+Download `Anasing-0.6.2-beta.1-arm64-unsigned.dmg` from [GitHub Releases](https://github.com/anashamad9/amassing/releases), drag **Anasing.app** into **Applications**, then open it once. The app stays in the menu bar. Its conversion engines are bundled: recipients do not need Homebrew, Xcode, Python, or LibreOffice installed separately.
 
 > **Unsigned beta:** the prepared artifact is ad-hoc signed, not Developer ID-signed or Apple-notarized. macOS may block an unsigned download. Do not disable macOS security features. A publisher should complete the signing and notarization procedure in [RELEASING.md](RELEASING.md) before calling it a normal public installer.
 
@@ -84,6 +84,14 @@ SVG is an image input and is rasterized on export. Single-file bars omit the exi
 - Launch at login is enabled on first normal launch. Turn it off from the menu or macOS Login Items. macOS may require approval in System Settings.
 - Automated tests and a bundled dependency audit pass on the development Mac. Independent testing on a clean Mac is still required before a production release.
 
+## Folder access · صلاحيات المجلدات
+
+macOS controls access to Downloads, Desktop, Documents, and other protected locations. If access is blocked, choose the source folder in Anasing’s permission picker once. The grant is saved and restored for every action; you can also use **Allow folder access… · السماح بالوصول للمجلد** in the menu to select several folders in advance. Later permission failures offer **Allow & retry** with the original editor settings preserved.
+
+The native app reads selected files and saves results. Conversion helpers receive private temporary copies rather than original protected paths, so Python, FFmpeg, and Office do not need separate access to your source folders. Temporary copies are removed when the operation finishes. Outputs still appear beside the original; existing files remain untouched. macOS can revoke permissions or require a new grant, and Anasing cannot override that decision. Grant folders you use rather than disabling system security.
+
+إذا منع النظام الوصول، اختر مجلد الملف مرة واحدة؛ تحفظ الصلاحية لجميع الإجراءات وبعد إعادة تشغيل التطبيق. تستخدم أدوات التحويل نسخاً مؤقتة، وتبقى النتائج بجانب ملفاتك الأصلية.
+
 ## Privacy
 
 Files are processed locally. No accounts, telemetry, cloud conversion, or clipboard history. Clipboard access happens only for explicit Copy actions. The current file drag pasteboard and modifier/mouse state are used to display the bar. Accessibility and Input Monitoring permissions are not requested. AirDrop transmits only through the recipient flow you choose.
@@ -125,6 +133,8 @@ See [RELEASING.md](RELEASING.md) for the exact release assets, GitHub upload ste
 dist/portable/Anasing.app/Contents/MacOS/Anasing --smoke-test
 
 dist/portable/Anasing.app/Contents/MacOS/Anasing --editor-test
+
+dist/portable/Anasing.app/Contents/MacOS/Anasing --file-access-test
 
 # Native-to-bundled-engine conversion and PDF image-preview checks:
 dist/portable/Anasing.app/Contents/MacOS/Anasing --pipeline-test

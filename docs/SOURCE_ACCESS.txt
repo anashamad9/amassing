@@ -1,6 +1,6 @@
-Anasing source code is included in this disk image as Anasing-0.6.1-beta.1-source.tar.gz.
+Anasing source code is included in this disk image as Anasing-0.6.2-beta.1-source.tar.gz.
 
-The publisher should attach Anasing-0.6.1-beta.1-third-party-sources.tar.gz alongside this DMG on the same GitHub release, together with SHA256SUMS.txt.
+The publisher should attach Anasing-0.6.2-beta.1-third-party-sources.tar.gz alongside this DMG on the same GitHub release, together with SHA256SUMS.txt.
 That archive contains source distributions, build recipes, license files, and provenance information for the packaged engines and libraries.
 
 See THIRD_PARTY_NOTICES.txt and the source archive's source manifest for exact components and available upstream sources.

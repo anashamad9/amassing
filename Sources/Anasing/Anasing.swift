@@ -65,6 +65,7 @@ final class AppDelegate:NSObject,NSApplicationDelegate {
             let item=NSMenuItem(title:bilingual(category.rawValue.capitalized,category.arabicName),action:#selector(previewActions(_:)),keyEquivalent:"");item.representedObject=category.rawValue;item.target=self;previews.addItem(item)
         }
         let item=NSMenuItem(title:"Preview actions · معاينة الخيارات",action:nil,keyEquivalent:"");item.submenu=previews;menu.addItem(item)
+        menu.addItem(withTitle:"Allow folder access… · السماح بالوصول للمجلد",action:#selector(allowFolderAccess),keyEquivalent:"")
         menu.addItem(withTitle:"Last result · آخر نتيجة",action:#selector(showLastResult),keyEquivalent:"")
         let soundItem=menu.addItem(withTitle:"Sound effects · المؤثرات الصوتية",action:#selector(toggleSounds(_:)),keyEquivalent:"")
         soundItem.state=UserDefaults.standard.bool(forKey:"muteSounds") ? .off:.on
@@ -87,6 +88,8 @@ final class AppDelegate:NSObject,NSApplicationDelegate {
         if args.contains("--smoke-test") {
             smokeTest();print("ANASING_CATALOG_AND_GESTURE_TESTS_PASSED");NSApp.terminate(nil)
         }
+        if args.contains("--file-access-test") { fileAccessChecks();NSApp.terminate(nil) }
+        if let index=args.firstIndex(of:"--folder-pipeline-test"),args.count>index+1 { folderPipelineTest(at:URL(fileURLWithPath:args[index+1])) }
         if args.contains("--editor-test") { editorTest() }
         if args.contains("--pipeline-test") { pipelineTest() }
         if args.contains("--pdf-feedback-test") { pdfFeedbackTest() }
@@ -162,8 +165,10 @@ final class AppDelegate:NSObject,NSApplicationDelegate {
     func applicationShouldTerminateAfterLastWindowClosed(_ sender:NSApplication)->Bool { false }
     func applicationShouldHandleReopen(_ sender:NSApplication,hasVisibleWindows flag:Bool)->Bool { true }
     func perform(_ action:WheelAction,urls:[URL]) {
+        let scope=SecurityScopeLease(urls);defer { withExtendedLifetime(scope) {} }
         guard action.available else { showError(action.explanation);return }
         if Catalog.universal.contains(where:{$0.id==action.id}) { files.perform(action.id,urls:urls);return }
+        guard FileAccess.shared.prepare(urls,writeBeside:true) else { return }
         guard let parameters=editParameters(action:action,urls:urls) else { return }
         runner.run(action:action,urls:urls,parameters:parameters)
     }

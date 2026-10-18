@@ -25,6 +25,7 @@ final class ActionFeedback:ObservableObject,Identifiable {
     @Published var outputs:[URL]=[]
     @Published var previews:[URL]=[]
     var cancel:(()->Void)?
+    @Published var retry:(()->Void)?
     init(title:String,source:String) { self.title=title;self.source=source }
     static func previewFiles(_ outputs:[URL])->(files:[URL],count:Int) {
         var candidates:[URL]=[];var count=0
@@ -79,6 +80,7 @@ struct ActionFeedbackView:View {
             if !model.details.isEmpty { Text(model.details).font(.system(size:11)).foregroundStyle(.white.opacity(0.65)).lineLimit(model.state == .failed ? 5:3).textSelection(.enabled) }
             if !model.previews.isEmpty { HStack(alignment:.top,spacing:10) { ForEach(model.previews,id:\.self) { ResultThumbnail(url:$0) } } }
             HStack(spacing:10) {
+                if let retry=model.retry,model.state == .failed { Button("Allow & retry · سماح وإعادة") { retry() }.buttonStyle(.borderedProminent).tint(.white.opacity(0.2)) }
                 if model.state.busy { Button("Cancel · إلغاء") { model.cancel?() }.buttonStyle(.bordered) }
                 if let first=model.outputs.first {
                     Button("Open result · فتح الناتج") { NSWorkspace.shared.open(first) }.buttonStyle(.borderedProminent).tint(.white.opacity(0.2))
@@ -123,8 +125,8 @@ final class FeedbackCenter {
         model.details="\(count) result(s) saved beside the source.\nتم حفظ الناتج بجانب الملف الأصلي."
         last=model;resize(model);ActionSound.play("success",volume:0.5);expire(model,after:35)
     }
-    func failed(_ model:ActionFeedback?,message:String) {
-        guard let model else { return };model.state = .failed;model.details=message;last=model;resize(model);ActionSound.play("failure",volume:0.5)
+    func failed(_ model:ActionFeedback?,message:String,retry:(()->Void)?=nil) {
+        guard let model else { return };model.state = .failed;model.details=message;model.retry=retry;last=model;resize(model);ActionSound.play("failure",volume:0.5)
     }
     func cancelled(_ model:ActionFeedback?) { guard let model else { return };model.state = .cancelled;model.details="Stopped. Any completed copies remain beside their sources.\nتم الإيقاف. تبقى النسخ المكتملة بجانب ملفاتها الأصلية.";resize(model);expire(model,after:10) }
     func notice(_ message:String,urls:[URL]=[]) {
