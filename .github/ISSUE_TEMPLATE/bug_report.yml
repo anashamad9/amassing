@@ -1,0 +1,26 @@
+name: Bug report / بلاغ عن مشكلة
+description: Report a reproducible problem in Anasing.
+body:
+  - type: input
+    id: version
+    attributes:
+      label: Anasing version / إصدار أناسينغ
+    validations:
+      required: true
+  - type: input
+    id: mac
+    attributes:
+      label: macOS version and Mac chip / النظام والمعالج
+    validations:
+      required: true
+  - type: textarea
+    id: reproduce
+    attributes:
+      label: Steps, expected behavior, and actual result / الخطوات والنتيجة
+    validations:
+      required: true
+  - type: textarea
+    id: files
+    attributes:
+      label: File type and error text / نوع الملف ورسالة الخطأ
+      description: Use a non-sensitive sample. Do not upload private files.

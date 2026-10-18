@@ -1,0 +1,445 @@
+{
+  "anasing_version": "0.6.1-beta.1",
+  "sources": [
+    {
+      "name": "dav1d",
+      "version": "1.5.4",
+      "url": "https://code.videolan.org/videolan/dav1d/-/archive/1.5.4/dav1d-1.5.4.tar.bz2",
+      "expected_sha256": "2abfb0c89212e6e4733a54e0ae509ec00a5b845a6360946f918806e14aedb011",
+      "archive": "dav1d-1.5.4--dav1d-1.5.4.tar.bz2",
+      "sha256": "2abfb0c89212e6e4733a54e0ae509ec00a5b845a6360946f918806e14aedb011",
+      "status": "downloaded"
+    },
+    {
+      "name": "ffmpeg",
+      "version": "9.0.2",
+      "url": "https://ffmpeg.org/releases/ffmpeg-9.0.2.tar.xz",
+      "expected_sha256": "8c3850283eb25fa026482078a04051e0be17347b09ef81a0849bec15a96e002e",
+      "archive": "ffmpeg-9.0.2--ffmpeg-9.0.2.tar.xz",
+      "sha256": "8c3850283eb25fa026482078a04051e0be17347b09ef81a0849bec15a96e002e",
+      "status": "downloaded"
+    },
+    {
+      "name": "giflib",
+      "version": "6.1.3",
+      "url": "https://downloads.sourceforge.net/project/giflib/giflib-6.x/giflib-6.1.3.tar.gz",
+      "expected_sha256": "b65b66b99f0424b93525f987386f22fc5efb9da2bfc92ad4a532249aaffbab0e",
+      "archive": "giflib-6.1.3--giflib-6.1.3.tar.gz",
+      "sha256": "b65b66b99f0424b93525f987386f22fc5efb9da2bfc92ad4a532249aaffbab0e",
+      "status": "downloaded"
+    },
+    {
+      "name": "jpeg-turbo",
+      "version": "3.2.0",
+      "url": "https://github.com/libjpeg-turbo/libjpeg-turbo/releases/download/3.2.0/libjpeg-turbo-3.2.0.tar.gz",
+      "expected_sha256": "6f30092cef9fb839779646608f4ee14ae3cbac989c47fa05e841b0841f09878e",
+      "archive": "jpeg-turbo-3.2.0--libjpeg-turbo-3.2.0.tar.gz",
+      "sha256": "6f30092cef9fb839779646608f4ee14ae3cbac989c47fa05e841b0841f09878e",
+      "status": "downloaded"
+    },
+    {
+      "name": "lame",
+      "version": "4.0",
+      "url": "https://downloads.sourceforge.net/project/lame/lame/4.0/lame-4.0.tar.gz",
+      "expected_sha256": "3df5124d5ad3a98312ffd7ba6a9b36230e4f8a3e66d3ce0f425e336c32d216eb",
+      "archive": "lame-4.0--lame-4.0.tar.gz",
+      "sha256": "3df5124d5ad3a98312ffd7ba6a9b36230e4f8a3e66d3ce0f425e336c32d216eb",
+      "status": "downloaded"
+    },
+    {
+      "name": "leptonica",
+      "version": "1.87.0",
+      "url": "https://github.com/DanBloomberg/leptonica/releases/download/1.87.0/leptonica-1.87.0.tar.gz",
+      "expected_sha256": "c73363397f96eb1295602bf44d708a994ad42046c791bf03ea0505d829bdb6a7",
+      "archive": "leptonica-1.87.0--leptonica-1.87.0.tar.gz",
+      "sha256": "c73363397f96eb1295602bf44d708a994ad42046c791bf03ea0505d829bdb6a7",
+      "status": "downloaded"
+    },
+    {
+      "name": "libarchive",
+      "version": "3.8.10",
+      "url": "https://www.libarchive.org/downloads/libarchive-3.8.10.tar.xz",
+      "expected_sha256": "56cad765459d5ee25a3b761f90c47d99379d28297fbfb72d908880d6b875fb96",
+      "archive": "libarchive-3.8.10--libarchive-3.8.10.tar.xz",
+      "sha256": "56cad765459d5ee25a3b761f90c47d99379d28297fbfb72d908880d6b875fb96",
+      "status": "downloaded"
+    },
+    {
+      "name": "libb2",
+      "version": "0.98.1",
+      "url": "https://github.com/BLAKE2/libb2/releases/download/v0.98.1/libb2-0.98.1.tar.gz",
+      "expected_sha256": "53626fddce753c454a3fea581cbbc7fe9bbcf0bc70416d48fdbbf5d87ef6c72e",
+      "archive": "libb2-0.98.1--libb2-0.98.1.tar.gz",
+      "sha256": "53626fddce753c454a3fea581cbbc7fe9bbcf0bc70416d48fdbbf5d87ef6c72e",
+      "status": "downloaded"
+    },
+    {
+      "name": "libpng",
+      "version": "1.6.59",
+      "url": "https://downloads.sourceforge.net/project/libpng/libpng16/1.6.59/libpng-1.6.59.tar.xz",
+      "expected_sha256": "d80dd2a38a37f803cb9b6ac7b14bd6e74ddc3b654780a8380bdf93523fdb4389",
+      "archive": "libpng-1.6.59--libpng-1.6.59.tar.xz",
+      "sha256": "d80dd2a38a37f803cb9b6ac7b14bd6e74ddc3b654780a8380bdf93523fdb4389",
+      "status": "downloaded"
+    },
+    {
+      "name": "libtiff",
+      "version": "4.7.2",
+      "url": "https://download.osgeo.org/libtiff/tiff-4.7.2.tar.gz",
+      "expected_sha256": "672bd7d10aee4606171afb864f3570b83340f6a33e2c186dc0512f7145ffdf6a",
+      "archive": "libtiff-4.7.2--tiff-4.7.2.tar.gz",
+      "sha256": "672bd7d10aee4606171afb864f3570b83340f6a33e2c186dc0512f7145ffdf6a",
+      "status": "downloaded"
+    },
+    {
+      "name": "libvmaf",
+      "version": "3.2.1",
+      "url": "https://github.com/Netflix/vmaf/archive/refs/tags/v3.2.1.tar.gz",
+      "expected_sha256": "5df7386911bc15fd1ca783132528748d219768ae4fc5f8e0b61184f041648092",
+      "archive": "libvmaf-3.2.1--v3.2.1.tar.gz",
+      "sha256": "5df7386911bc15fd1ca783132528748d219768ae4fc5f8e0b61184f041648092",
+      "status": "downloaded"
+    },
+    {
+      "name": "libvpx",
+      "version": "1.17.0",
+      "url": "https://github.com/webmproject/libvpx/archive/refs/tags/v1.17.0.tar.gz",
+      "expected_sha256": "1020f184046187baa2985dbde38e0691f49c44088bca7a1842b0236c6081dc0a",
+      "archive": "libvpx-1.17.0--v1.17.0.tar.gz",
+      "sha256": "1020f184046187baa2985dbde38e0691f49c44088bca7a1842b0236c6081dc0a",
+      "status": "downloaded"
+    },
+    {
+      "name": "lz4",
+      "version": "1.10.0",
+      "url": "https://github.com/lz4/lz4/archive/refs/tags/v1.10.0.tar.gz",
+      "expected_sha256": "537512904744b35e232912055ccf8ec66d768639ff3abe5788d90d792ec5f48b",
+      "archive": "lz4-1.10.0--v1.10.0.tar.gz",
+      "sha256": "537512904744b35e232912055ccf8ec66d768639ff3abe5788d90d792ec5f48b",
+      "status": "downloaded"
+    },
+    {
+      "name": "mpg123",
+      "version": "1.33.7",
+      "url": "https://www.mpg123.de/download/mpg123-1.33.7.tar.bz2",
+      "expected_sha256": "31d0e35a4ca567ec9b5ebda6c3062bb4435d6d3eacd6ef0d95cadd7854dc03ee",
+      "archive": "mpg123-1.33.7--mpg123-1.33.7.tar.bz2",
+      "sha256": "31d0e35a4ca567ec9b5ebda6c3062bb4435d6d3eacd6ef0d95cadd7854dc03ee",
+      "status": "downloaded"
+    },
+    {
+      "name": "openssl@3",
+      "version": "3.6.4",
+      "url": "https://github.com/openssl/openssl/releases/download/openssl-3.6.4/openssl-3.6.4.tar.gz",
+      "expected_sha256": "9bffaa1ad1e07b354c21bd3324ec02fa15579f45a7d0494b3e74bc449b7333ef",
+      "archive": "openssl@3-3.6.4--openssl-3.6.4.tar.gz",
+      "sha256": "9bffaa1ad1e07b354c21bd3324ec02fa15579f45a7d0494b3e74bc449b7333ef",
+      "status": "downloaded"
+    },
+    {
+      "name": "opus",
+      "version": "1.6.1",
+      "url": "https://ftp.osuosl.org/pub/xiph/releases/opus/opus-1.6.1.tar.gz",
+      "expected_sha256": "6ffcb593207be92584df15b32466ed64bbec99109f007c82205f0194572411a1",
+      "archive": "opus-1.6.1--opus-1.6.1.tar.gz",
+      "sha256": "6ffcb593207be92584df15b32466ed64bbec99109f007c82205f0194572411a1",
+      "status": "downloaded"
+    },
+    {
+      "name": "svt-av1",
+      "version": "4.2.0",
+      "url": "https://gitlab.com/AOMediaCodec/SVT-AV1/-/archive/v4.2.0/SVT-AV1-v4.2.0.tar.bz2",
+      "expected_sha256": "512f2ea5649e3e76c2dddcc25c2556fb67a9582baaab207c9c96161c94659dad",
+      "archive": "svt-av1-4.2.0--SVT-AV1-v4.2.0.tar.bz2",
+      "sha256": "512f2ea5649e3e76c2dddcc25c2556fb67a9582baaab207c9c96161c94659dad",
+      "status": "downloaded"
+    },
+    {
+      "name": "tesseract",
+      "version": "5.5.3",
+      "url": "https://github.com/tesseract-ocr/tesseract/archive/refs/tags/5.5.3.tar.gz",
+      "expected_sha256": "9218e62793116d42a9f6d14cd9348518b27f382096eea3d0f2d1a24616bb5884",
+      "archive": "tesseract-5.5.3--5.5.3.tar.gz",
+      "sha256": "9218e62793116d42a9f6d14cd9348518b27f382096eea3d0f2d1a24616bb5884",
+      "status": "downloaded"
+    },
+    {
+      "name": "webp",
+      "version": "1.6.0",
+      "url": "https://storage.googleapis.com/downloads.webmproject.org/releases/webp/libwebp-1.6.0.tar.gz",
+      "expected_sha256": "e4ab7009bf0629fd11982d4c2aa83964cf244cffba7347ecd39019a9e38c4564",
+      "archive": "webp-1.6.0--libwebp-1.6.0.tar.gz",
+      "sha256": "e4ab7009bf0629fd11982d4c2aa83964cf244cffba7347ecd39019a9e38c4564",
+      "status": "downloaded"
+    },
+    {
+      "name": "x264",
+      "version": "r3222",
+      "url": "https://code.videolan.org/videolan/x264/-/archive/b35605ace3ddf7c1a5d67a2eb553f034aef41d55/x264-b35605ace3ddf7c1a5d67a2eb553f034aef41d55.tar.gz",
+      "expected_sha256": null,
+      "archive": "x264-r3222--x264-b35605ace3ddf7c1a5d67a2eb553f034aef41d55.tar.gz",
+      "sha256": "cd71a7515b0e9a012e1ac9b1f8415bebcaf6fc97d4db32286642ac4c0fbe24f9",
+      "status": "downloaded"
+    },
+    {
+      "name": "x265",
+      "version": "4.3",
+      "url": "https://github.com/Multicorewareinc/x265/releases/download/4.3/x265_4.3.tar.gz",
+      "expected_sha256": "83c53e4c8bbb8f1e33ed59e10a7d621d1d7801ca853910c3eb41f038b8ffb121",
+      "archive": "x265-4.3--x265_4.3.tar.gz",
+      "sha256": "83c53e4c8bbb8f1e33ed59e10a7d621d1d7801ca853910c3eb41f038b8ffb121",
+      "status": "downloaded"
+    },
+    {
+      "name": "xz",
+      "version": "5.8.4",
+      "url": "https://github.com/tukaani-project/xz/releases/download/v5.8.4/xz-5.8.4.tar.gz",
+      "expected_sha256": "0014c7886930454fe8bd4228665b51af55eeae560ea135c9c4cd33f55b2591d9",
+      "archive": "xz-5.8.4--xz-5.8.4.tar.gz",
+      "sha256": "0014c7886930454fe8bd4228665b51af55eeae560ea135c9c4cd33f55b2591d9",
+      "status": "downloaded"
+    },
+    {
+      "name": "zstd",
+      "version": "1.5.7_1",
+      "url": "https://github.com/facebook/zstd/archive/refs/tags/v1.5.7.tar.gz",
+      "expected_sha256": "37d7284556b20954e56e1ca85b80226768902e2edabd3b649e9e72c0c9012ee3",
+      "archive": "zstd-1.5.7_1--v1.5.7.tar.gz",
+      "sha256": "37d7284556b20954e56e1ca85b80226768902e2edabd3b649e9e72c0c9012ee3",
+      "status": "downloaded"
+    },
+    {
+      "name": "beautifulsoup4",
+      "version": "4.15.0",
+      "pypi": true,
+      "url": "https://files.pythonhosted.org/packages/43/65/318323f98dbee45d42dff61d8f047181bc6f2268a9068cfad035a46be5af/beautifulsoup4-4.15.0.tar.gz",
+      "expected_sha256": "288e3ca7d54b06f2ac191970bc275c1939cb46d450b255bf6718b04aa37ab4f7",
+      "archive": "beautifulsoup4-4.15.0--beautifulsoup4-4.15.0.tar.gz",
+      "sha256": "288e3ca7d54b06f2ac191970bc275c1939cb46d450b255bf6718b04aa37ab4f7",
+      "status": "downloaded"
+    },
+    {
+      "name": "EbookLib",
+      "version": "0.20",
+      "pypi": true,
+      "url": "https://files.pythonhosted.org/packages/77/85/322e8882a582d4b707220d1929cfb74c125f2ba513991edbce40dbc462de/ebooklib-0.20.tar.gz",
+      "expected_sha256": "35e2f9d7d39907be8d39ae2deb261b19848945903ae3dbb6577b187ead69e985",
+      "archive": "EbookLib-0.20--ebooklib-0.20.tar.gz",
+      "sha256": "35e2f9d7d39907be8d39ae2deb261b19848945903ae3dbb6577b187ead69e985",
+      "status": "downloaded"
+    },
+    {
+      "name": "et_xmlfile",
+      "version": "2.0.0",
+      "pypi": true,
+      "url": "https://files.pythonhosted.org/packages/d3/38/af70d7ab1ae9d4da450eeec1fa3918940a5fafb9055e934af8d6eb0c2313/et_xmlfile-2.0.0.tar.gz",
+      "expected_sha256": "dab3f4764309081ce75662649be815c4c9081e88f0837825f90fd28317d4da54",
+      "archive": "et_xmlfile-2.0.0--et_xmlfile-2.0.0.tar.gz",
+      "sha256": "dab3f4764309081ce75662649be815c4c9081e88f0837825f90fd28317d4da54",
+      "status": "downloaded"
+    },
+    {
+      "name": "lxml",
+      "version": "6.1.3",
+      "pypi": true,
+      "url": "https://files.pythonhosted.org/packages/23/ad/28ecd7cb894d172f3c9c80a075eeeb2017ac62e3632cee05a5f9493547eb/lxml-6.1.3.tar.gz",
+      "expected_sha256": "45222d94ddd511536f3b2f7d9deae3b2339b4ce0f075f1ca25703b07cad9dd21",
+      "archive": "lxml-6.1.3--lxml-6.1.3.tar.gz",
+      "sha256": "45222d94ddd511536f3b2f7d9deae3b2339b4ce0f075f1ca25703b07cad9dd21",
+      "status": "downloaded"
+    },
+    {
+      "name": "openpyxl",
+      "version": "3.1.5",
+      "pypi": true,
+      "url": "https://files.pythonhosted.org/packages/3d/f9/88d94a75de065ea32619465d2f77b29a0469500e99012523b91cc4141cd1/openpyxl-3.1.5.tar.gz",
+      "expected_sha256": "cf0e3cf56142039133628b5acffe8ef0c12bc902d2aadd3e0fe5878dc08d1050",
+      "archive": "openpyxl-3.1.5--openpyxl-3.1.5.tar.gz",
+      "sha256": "cf0e3cf56142039133628b5acffe8ef0c12bc902d2aadd3e0fe5878dc08d1050",
+      "status": "downloaded"
+    },
+    {
+      "name": "pillow",
+      "version": "11.3.0",
+      "pypi": true,
+      "url": "https://files.pythonhosted.org/packages/f3/0d/d0d6dea55cd152ce3d6767bb38a8fc10e33796ba4ba210cbab9354b6d238/pillow-11.3.0.tar.gz",
+      "expected_sha256": "3828ee7586cd0b2091b6209e5ad53e20d0649bbe87164a459d0676e035e8f523",
+      "archive": "pillow-11.3.0--pillow-11.3.0.tar.gz",
+      "sha256": "3828ee7586cd0b2091b6209e5ad53e20d0649bbe87164a459d0676e035e8f523",
+      "status": "downloaded"
+    },
+    {
+      "name": "pillow_heif",
+      "version": "1.1.1",
+      "pypi": true,
+      "url": "https://files.pythonhosted.org/packages/64/65/77284daf2a8a2849b9040889bd8e1b845e693ed97973a28ba2122b8922ad/pillow_heif-1.1.1.tar.gz",
+      "expected_sha256": "f60e8c8a8928556104cec4fff39d43caa1da105625bdb53b11ce3c89d09b6bde",
+      "archive": "pillow_heif-1.1.1--pillow_heif-1.1.1.tar.gz",
+      "sha256": "f60e8c8a8928556104cec4fff39d43caa1da105625bdb53b11ce3c89d09b6bde",
+      "status": "downloaded"
+    },
+    {
+      "name": "PyMuPDF",
+      "version": "1.26.5",
+      "pypi": true,
+      "url": "https://files.pythonhosted.org/packages/8d/9a/e0a4e92a85fc17be7c54afdbb113f0ade2a8bca49856d510e28bd249e462/pymupdf-1.26.5.tar.gz",
+      "expected_sha256": "8ef335e07f648492df240f2247854d0e7c0467afb9c4dc2376ec30978ec158c3",
+      "archive": "PyMuPDF-1.26.5--pymupdf-1.26.5.tar.gz",
+      "sha256": "8ef335e07f648492df240f2247854d0e7c0467afb9c4dc2376ec30978ec158c3",
+      "status": "downloaded"
+    },
+    {
+      "name": "pypandoc_binary",
+      "version": "1.17",
+      "pypi": true,
+      "url": "https://github.com/JessicaTegner/pypandoc/archive/refs/tags/v1.17.tar.gz",
+      "archive": "pypandoc_binary-1.17--v1.17.tar.gz",
+      "sha256": "6fcd5739c2eefec86723df9b6ae4eac2c3918d8bf22b7209adcb5cd1c23d20c1",
+      "status": "downloaded"
+    },
+    {
+      "name": "python-docx",
+      "version": "1.2.0",
+      "pypi": true,
+      "url": "https://files.pythonhosted.org/packages/a9/f7/eddfe33871520adab45aaa1a71f0402a2252050c14c7e3009446c8f4701c/python_docx-1.2.0.tar.gz",
+      "expected_sha256": "7bc9d7b7d8a69c9c02ca09216118c86552704edc23bac179283f2e38f86220ce",
+      "archive": "python-docx-1.2.0--python_docx-1.2.0.tar.gz",
+      "sha256": "7bc9d7b7d8a69c9c02ca09216118c86552704edc23bac179283f2e38f86220ce",
+      "status": "downloaded"
+    },
+    {
+      "name": "python-pptx",
+      "version": "1.0.2",
+      "pypi": true,
+      "url": "https://files.pythonhosted.org/packages/52/a9/0c0db8d37b2b8a645666f7fd8accea4c6224e013c42b1d5c17c93590cd06/python_pptx-1.0.2.tar.gz",
+      "expected_sha256": "479a8af0eaf0f0d76b6f00b0887732874ad2e3188230315290cd1f9dd9cc7095",
+      "archive": "python-pptx-1.0.2--python_pptx-1.0.2.tar.gz",
+      "sha256": "479a8af0eaf0f0d76b6f00b0887732874ad2e3188230315290cd1f9dd9cc7095",
+      "status": "downloaded"
+    },
+    {
+      "name": "rarfile",
+      "version": "4.2",
+      "pypi": true,
+      "url": "https://files.pythonhosted.org/packages/26/3f/3118a797444e7e30e784921c4bfafb6500fb288a0c84cb8c32ed15853c16/rarfile-4.2.tar.gz",
+      "expected_sha256": "8e1c8e72d0845ad2b32a47ab11a719bc2e41165ec101fd4d3fe9e92aa3f469ef",
+      "archive": "rarfile-4.2--rarfile-4.2.tar.gz",
+      "sha256": "8e1c8e72d0845ad2b32a47ab11a719bc2e41165ec101fd4d3fe9e92aa3f469ef",
+      "status": "downloaded"
+    },
+    {
+      "name": "six",
+      "version": "1.17.0",
+      "pypi": true,
+      "url": "https://files.pythonhosted.org/packages/94/e7/b2c673351809dca68a0e064b6af791aa332cf192da575fd474ed7d6f16a2/six-1.17.0.tar.gz",
+      "expected_sha256": "ff70335d468e7eb6ec65b95b99d3a2836546063f63acc5171de367e834932a81",
+      "archive": "six-1.17.0--six-1.17.0.tar.gz",
+      "sha256": "ff70335d468e7eb6ec65b95b99d3a2836546063f63acc5171de367e834932a81",
+      "status": "downloaded"
+    },
+    {
+      "name": "soupsieve",
+      "version": "3.0.3",
+      "pypi": true,
+      "url": "https://files.pythonhosted.org/packages/5e/77/2dcfa996b01702ab8fd0763d84098f6a640d6162a328f1c04c2697579a1a/soupsieve-3.0.3.tar.gz",
+      "expected_sha256": "7dcf6022eed0399eb9934a75e020148f7a2024c37b7dfcd3cf2c5505d69c364e",
+      "archive": "soupsieve-3.0.3--soupsieve-3.0.3.tar.gz",
+      "sha256": "7dcf6022eed0399eb9934a75e020148f7a2024c37b7dfcd3cf2c5505d69c364e",
+      "status": "downloaded"
+    },
+    {
+      "name": "typing_extensions",
+      "version": "4.16.0",
+      "pypi": true,
+      "url": "https://files.pythonhosted.org/packages/f6/cc/6253133b5bb138fc3306cebfbda2c520f545d36b5be2c7255cc528bb45d6/typing_extensions-4.16.0.tar.gz",
+      "expected_sha256": "dc983d19a509c94dba722ee6abd33940f7c05a89e243c47e907eb4db6f1a43e5",
+      "archive": "typing_extensions-4.16.0--typing_extensions-4.16.0.tar.gz",
+      "sha256": "dc983d19a509c94dba722ee6abd33940f7c05a89e243c47e907eb4db6f1a43e5",
+      "status": "downloaded"
+    },
+    {
+      "name": "xlsxwriter",
+      "version": "3.2.9",
+      "pypi": true,
+      "url": "https://files.pythonhosted.org/packages/46/2c/c06ef49dc36e7954e55b802a8b231770d286a9758b3d936bd1e04ce5ba88/xlsxwriter-3.2.9.tar.gz",
+      "expected_sha256": "254b1c37a368c444eac6e2f867405cc9e461b0ed97a3233b2ac1e574efb4140c",
+      "archive": "xlsxwriter-3.2.9--xlsxwriter-3.2.9.tar.gz",
+      "sha256": "254b1c37a368c444eac6e2f867405cc9e461b0ed97a3233b2ac1e574efb4140c",
+      "status": "downloaded"
+    },
+    {
+      "name": "CPython-standalone-build-recipes",
+      "version": "20261013",
+      "url": "https://github.com/astral-sh/python-build-standalone/archive/refs/tags/20261013.tar.gz",
+      "archive": "CPython-standalone-build-recipes-20261013--20261013.tar.gz",
+      "sha256": "eab8c690a995df84494382a76db13ef0e8cabf1424e5b5261de7305d69a8b240",
+      "status": "downloaded"
+    },
+    {
+      "name": "CPython",
+      "version": "3.12.15",
+      "url": "https://www.python.org/ftp/python/3.12.15/Python-3.12.15.tar.xz",
+      "archive": "CPython-3.12.15--Python-3.12.15.tar.xz",
+      "sha256": "c2c4321961fab0fb999d66e0cecf521c2ab3994c7992873ea99e306c1094fd5a",
+      "status": "downloaded"
+    },
+    {
+      "name": "MuPDF",
+      "version": "1.26.10",
+      "url": "https://mupdf.com/downloads/archive/mupdf-1.26.10-source.tar.gz",
+      "archive": "MuPDF-1.26.10--mupdf-1.26.10-source.tar.gz",
+      "sha256": "1653f35bd8fbd970f05523efdc7f86e41e9728e2564a3295296e03cf59a51437",
+      "status": "downloaded"
+    },
+    {
+      "name": "Pandoc",
+      "version": "3.9",
+      "url": "https://github.com/jgm/pandoc/archive/refs/tags/3.9.tar.gz",
+      "archive": "Pandoc-3.9--3.9.tar.gz",
+      "sha256": "d8da16e1ad1f685123fbc1a5a83b74766bcfd939dc6989484822f023bb70438f",
+      "status": "downloaded"
+    },
+    {
+      "name": "libheif-wheel",
+      "version": "1.20.2",
+      "url": "https://github.com/strukturag/libheif/archive/refs/tags/v1.20.2.tar.gz",
+      "archive": "libheif-wheel-1.20.2--v1.20.2.tar.gz",
+      "sha256": "b70340395d84184bb8dfc833dd51c95ae049435f7ff9abc7b505a08b5ee2bd2a",
+      "status": "downloaded"
+    },
+    {
+      "name": "libde265-wheel",
+      "version": "1.0.16",
+      "url": "https://github.com/strukturag/libde265/archive/refs/tags/v1.0.16.tar.gz",
+      "archive": "libde265-wheel-1.0.16--v1.0.16.tar.gz",
+      "sha256": "ed12c931759c1575848832f70db5071a001ac813db4e4f568ee08aef6e234d4e",
+      "status": "downloaded"
+    },
+    {
+      "name": "x265-wheel",
+      "version": "4.1+1-1d117be",
+      "url": "https://github.com/Multicorewareinc/x265/archive/1d117be.tar.gz",
+      "archive": "x265-wheel-4.1+1-1d117be--1d117be.tar.gz",
+      "sha256": "ddb45be97924ab3d5da78e9c436418a12f812ae856cf3547e29e2bd69edcdf82",
+      "status": "downloaded"
+    },
+    {
+      "name": "LibreOffice-core",
+      "version": "26.8.1.1",
+      "url": "https://download.documentfoundation.org/libreoffice/src/26.8.1/libreoffice-26.8.1.1.tar.xz",
+      "archive": "LibreOffice-core-26.8.1.1--libreoffice-26.8.1.1.tar.xz",
+      "sha256": "296ba78e7ab0d381b94c3d6342f4ebb2320ee5097ca58781b9b744cab90b9785",
+      "status": "downloaded"
+    },
+    {
+      "name": "LibreOffice-translations",
+      "version": "26.8.1.1",
+      "url": "https://download.documentfoundation.org/libreoffice/src/26.8.1/libreoffice-translations-26.8.1.1.tar.xz",
+      "archive": "LibreOffice-translations-26.8.1.1--libreoffice-translations-26.8.1.1.tar.xz",
+      "sha256": "789519befa409d7eec24043cea41ddd318d9f1212f555d8b28d4982e35693bfc",
+      "status": "downloaded"
+    }
+  ],
+  "unavailable_sources": [],
+  "note": "Anasing is AGPL-3.0-only; each upstream component retains its own license. Source provenance and build recipes are provided for the actual bundled versions."
+}

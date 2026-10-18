@@ -1,0 +1,39 @@
+name: Build beta
+on:
+  workflow_dispatch:
+  push:
+    tags: ['v*']
+permissions:
+  contents: read
+jobs:
+  build:
+    runs-on: macos-26
+    timeout-minutes: 90
+    steps:
+      - uses: actions/checkout@v7
+      - name: Verify Apple silicon runner
+        run: test "$(uname -m)" = arm64
+      - name: Fetch portable Python
+        run: ./scripts/fetch_runtime.sh
+      - name: Install development tools
+        run: ./scripts/setup.sh
+      - name: Build portable app
+        run: |
+          ./scripts/build.sh
+          python3 scripts/bundle_portable.py
+      - name: Test bundled app
+        run: ./scripts/test_portable.sh
+      - name: Collect corresponding source and package DMG
+        run: |
+          python3 scripts/collect_sources.py
+          python3 scripts/create_source_archive.py
+          ./scripts/package_dmg.sh
+      - name: Upload unsigned beta artifacts
+        uses: actions/upload-artifact@v7
+        with:
+          name: Anasing-unsigned-beta-arm64
+          path: |
+            release/*
+            artifacts/portable-audit.json
+          compression-level: 0
+          retention-days: 14

@@ -1,0 +1,14 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1024" height="1024" viewBox="0 0 1024 1024">
+<defs><linearGradient id="g" x2="1" y2="1"><stop stop-color="#56595d"/><stop offset="1" stop-color="#17191b"/></linearGradient></defs>
+<rect x="24" y="24" width="976" height="976" rx="224" fill="url(#g)" stroke="#929599" stroke-width="5"/>
+<rect x="119" y="285" width="786" height="360" rx="76" fill="#ffffff" fill-opacity=".08" stroke="#ffffff" stroke-opacity=".2" stroke-width="3"/>
+<rect x="157" y="324" width="209" height="280" rx="45" fill="#ffffff" fill-opacity=".1"/>
+<rect x="407" y="324" width="209" height="280" rx="45" fill="#ff6b28"/>
+<rect x="657" y="324" width="209" height="280" rx="45" fill="#ffffff" fill-opacity=".1"/>
+<g fill="none" stroke="white" stroke-width="15" stroke-linecap="round" stroke-linejoin="round">
+<path d="M231 412h62v72h-62z M249 394h62v72"/>
+<path d="M486 433l24 26 40-53 M481 511h63"/>
+<path d="M721 425h78m-39-39v78m-39 47h78"/>
+</g>
+<path d="M488 710v159l43-40 43 61 31-22-45-61 58-25z" fill="white" stroke="#1b1c1e" stroke-width="9" stroke-linejoin="round"/>
+</svg>

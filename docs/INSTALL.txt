@@ -1,0 +1,31 @@
+Anasing 0.6.1-beta.1 — UNSIGNED TEST BUILD
+أناسينغ — نسخة تجريبية غير موثقة من Apple
+
+Requires an Apple silicon Mac (M1 or newer) with macOS 26.6.2 or later.
+يتطلب جهاز Mac بمعالج Apple silicon وإصدار macOS 26.6.2 أو أحدث.
+
+1. Drag Anasing.app onto Applications.
+2. Open Anasing from Applications once. It runs in the menu bar without a main window or Dock icon.
+3. Begin dragging a file or folder, then tap Shift, Command, or Control.
+4. Move onto an option in the horizontal bar and release the file.
+
+اسحب Anasing.app إلى Applications ثم افتحه مرة واحدة.
+اسحب ملفاً أو مجلداً ثم اضغط أحد المفاتيح التالية، وأفلت على الخيار المطلوب:
+Shift: Convert / تحويل
+Command: Tools / أدوات
+Control: File actions / إجراءات الملفات
+
+New results are saved beside the original and shown in a preview card.
+تحفظ النسخ الجديدة بجانب الأصل، وتظهر بطاقة تعرض حالة التنفيذ والناتج.
+
+This build includes its conversion engines. No Homebrew, Xcode, or separate Python installation is required.
+تتضمن هذه النسخة محركات التحويل ولا تحتاج إلى تثبيت أدوات إضافية.
+
+IMPORTANT: This is an ad-hoc-signed development beta, not a Developer ID-signed or Apple-notarized release.
+macOS may refuse to launch an unsigned download. Do not disable Gatekeeper or other macOS security features.
+The publisher must sign and notarize a release before presenting it as a normal public installer.
+هذه نسخة تجريبية غير موثقة من Apple، وقد يمنع macOS تشغيلها. لا تعطل ميزات الحماية.
+
+Source code: included as Anasing-0.6.1-beta.1-source.tar.gz on this disk.
+License: GNU AGPL version 3 only. See LICENSE.txt and third-party notices.
+لا توجد حسابات أو تحليلات استخدام؛ تتم معالجة الملفات محلياً.
