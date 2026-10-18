@@ -8,7 +8,7 @@ The app contains:
 - PyMuPDF 1.26.5 / MuPDF 1.26.10, under AGPL/commercial licensing; this release uses the AGPL option.
 - LibreOffice 26.8.1, with its MPL/LGPL/Apache and component notices preserved in the nested app and `Contents/Resources/Licenses/LibreOffice`.
 - FFmpeg 9.0.2, configured with GPL/version3 support, and its linked codec libraries. Exact build recipes and copied licenses are under `Contents/Resources/Licenses/homebrew`.
-- Tesseract 5.5.3 and English/OSD OCR data, with their component notices.
+- Tesseract 5.5.3 rebuilt from verified upstream source for macOS 26.0 with `scripts/build_ocr.sh`, plus English/OSD OCR data and their component notices.
 - Pillow, pillow-heif and its bundled image codecs, python-docx, python-pptx, openpyxl, ebooklib, Beautiful Soup, lxml, pypandoc/Pandoc, rarfile, and their dependencies. License texts are preserved in their Python distribution metadata.
 
 The exact Python package versions are in `requirements-release.lock`. `Contents/Resources/bundle-manifest.json` records engine versions and load-command relocations. `docs/THIRD_PARTY_SOURCES.json` records downloaded source archives, upstream URLs, checksums, and any retrieval failures.

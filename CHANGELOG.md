@@ -1,5 +1,12 @@
 # Changelog
 
+## 0.6.3-beta.1
+
+- Target macOS 26.0 and later on Apple silicon.
+- Rebuild Tesseract from verified source for macOS 26.0 rather than changing a binary deployment flag.
+- Keep dependency auditing and fail builds whose engines require a later macOS version.
+- Validate on the development Mac; independent macOS 26.0 runtime validation remains required.
+
 ## 0.6.2-beta.1
 
 - Fix protected-folder permission failures by processing temporary copies through the native app.

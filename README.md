@@ -8,13 +8,13 @@ Anasing is a small macOS background utility for file conversions and quick actio
 
 ## Download and install · التنزيل والتثبيت
 
-**Current build: 0.6.2-beta.1 — Apple silicon, macOS 26.6.2 or later.** Intel Macs and earlier macOS versions are not supported by this bundled beta.
+**Current build: 0.6.3-beta.1 — Apple silicon, macOS 26.0 or later.** Intel Macs and earlier macOS versions are not supported by this bundled beta.
 
-Download `Anasing-0.6.2-beta.1-arm64-unsigned.dmg` from [GitHub Releases](https://github.com/anashamad9/amassing/releases), drag **Anasing.app** into **Applications**, then open it once. The app stays in the menu bar. Its conversion engines are bundled: recipients do not need Homebrew, Xcode, Python, or LibreOffice installed separately.
+Download `Anasing-0.6.3-beta.1-arm64-unsigned.dmg` from [GitHub Releases](https://github.com/anashamad9/amassing/releases), drag **Anasing.app** into **Applications**, then open it once. The app stays in the menu bar. Its conversion engines are bundled: recipients do not need Homebrew, Xcode, Python, or LibreOffice installed separately.
 
 > **Unsigned beta:** the prepared artifact is ad-hoc signed, not Developer ID-signed or Apple-notarized. macOS may block an unsigned download. Do not disable macOS security features. A publisher should complete the signing and notarization procedure in [RELEASING.md](RELEASING.md) before calling it a normal public installer.
 
-**بالعربية:** تتطلب النسخة التجريبية جهاز Apple silicon وإصدار macOS 26.6.2 أو أحدث. اسحب التطبيق إلى Applications وافتحه مرة واحدة. تتضمن النسخة أدوات التحويل، ولا تحتاج إلى تثبيت برامج إضافية. النسخة الحالية غير موثقة من Apple وقد يمنع النظام تشغيلها.
+**بالعربية:** تتطلب النسخة التجريبية جهاز Apple silicon وإصدار macOS 26.0 أو أحدث. اسحب التطبيق إلى Applications وافتحه مرة واحدة. تتضمن النسخة أدوات التحويل، ولا تحتاج إلى تثبيت برامج إضافية. النسخة الحالية غير موثقة من Apple وقد يمنع النظام تشغيلها.
 
 The release should include the DMG, `SHA256SUMS.txt`, the Anasing source archive, and the third-party source archive. Large binaries belong in **GitHub Release assets**, not in Git commits.
 
@@ -82,7 +82,7 @@ SVG is an image input and is rasterized on export. Single-file bars omit the exi
 - Redaction covers a manually selected region. Automatic face/text detection and tracking are not implemented.
 - File drags must provide standard macOS file URLs. Browser file promises, undownloaded cloud placeholders, encrypted PDFs, and password-protected archives are unsupported.
 - Launch at login is enabled on first normal launch. Turn it off from the menu or macOS Login Items. macOS may require approval in System Settings.
-- Automated tests and a bundled dependency audit pass on the development Mac. Independent testing on a clean Mac is still required before a production release.
+- Automated tests and a bundled dependency audit pass on the development Mac. The deployment target is macOS 26.0; tests ran on macOS 26.6.2. Independent runtime testing on a clean macOS 26.0 Mac is still required before a production release.
 
 ## Folder access · صلاحيات المجلدات
 

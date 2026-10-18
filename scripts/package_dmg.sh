@@ -7,15 +7,17 @@ FLAVOR="${ANASING_DMG_FLAVOR:-unsigned}"
 if [[ "$FLAVOR" == signed ]]; then
   codesign -dv "$APP" 2>&1 | grep -q "Authority=Developer ID Application"
 fi
+codesign --verify --deep --strict "$APP"
 VERSION=$(/usr/libexec/PlistBuddy -c 'Print AnasingReleaseVersion' "$APP/Contents/Info.plist")
 mkdir -p release
 STAGING=$(mktemp -d "$PWD/.release-cache/dmg.XXXXXX")
 trap 'rm -rf "$STAGING"' EXIT
 cp -R "$APP" "$STAGING/Anasing.app"
+codesign --verify --deep --strict "$STAGING/Anasing.app"
 ln -s /Applications "$STAGING/Applications"
 cp LICENSE "$STAGING/LICENSE.txt"
 if [[ "$FLAVOR" == unsigned ]]; then cp docs/INSTALL.txt "$STAGING/READ ME FIRST.txt"; else
-  printf '%s\n' 'Anasing — drag the app into Applications, then open it once.' 'أناسينغ — اسحب التطبيق إلى Applications ثم افتحه مرة واحدة.' 'Apple silicon · macOS 26.6.2+' > "$STAGING/READ ME FIRST.txt"
+  printf '%s\n' 'Anasing — drag the app into Applications, then open it once.' 'أناسينغ — اسحب التطبيق إلى Applications ثم افتحه مرة واحدة.' 'Apple silicon · macOS 26.0+' > "$STAGING/READ ME FIRST.txt"
 fi
 cp THIRD_PARTY_NOTICES.md "$STAGING/THIRD_PARTY_NOTICES.txt"
 cp "release/Anasing-$VERSION-source.tar.gz" "$STAGING/"

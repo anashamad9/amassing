@@ -27,6 +27,8 @@ def copytree(src,dst):
     shutil.copytree(src,dst,symlinks=True,dirs_exist_ok=True,ignore=shutil.ignore_patterns('__pycache__','.DS_Store','*.pyc'))
 
 if not CACHE.exists():raise SystemExit('Run scripts/fetch_runtime.sh first')
+OCR=ROOT/'.release-cache/ocr-macos26'
+if not (OCR/'bin/tesseract').exists():run(['/bin/zsh',ROOT/'scripts/build_ocr.sh'])
 if APP.exists():shutil.rmtree(APP)
 copytree(SOURCE,APP)
 if (RES/'runtime').exists():shutil.rmtree(RES/'runtime')
@@ -85,7 +87,7 @@ def bundle_file(original,destination=None):
     return target
 
 for name in ['ffmpeg','ffprobe','tesseract']:
-    bundle_file(Path('/opt/homebrew/bin')/name,RES/'tools/bin'/name)
+    bundle_file(OCR/'bin/tesseract' if name=='tesseract' else Path('/opt/homebrew/bin')/name,RES/'tools/bin'/name)
 
 manifest=[]
 for name,keg in sorted(kegs.items()):
@@ -102,6 +104,9 @@ for name,keg in sorted(kegs.items()):
             match=re.search(pattern,text,re.M)
             if match:metadata[key]=match.group(1)
     manifest.append(metadata)
+manifest.append({'name':'tesseract','version':'5.5.3','source_url':'https://github.com/tesseract-ocr/tesseract/archive/refs/tags/5.5.3.tar.gz','source_sha256':'9218e62793116d42a9f6d14cd9348518b27f382096eea3d0f2d1a24616bb5884','license':'Apache-2.0','build_recipe':'scripts/build_ocr.sh','deployment_target':'26.0'})
+(NOTICES/'tesseract').mkdir(exist_ok=True)
+shutil.copy2(ROOT/'.release-cache/tesseract-5.5.3/LICENSE',NOTICES/'tesseract/LICENSE')
 for name in ['LICENSE','NOTICE','LICENSE.html']:
     p=RES/'LibreOffice.app/Contents/Resources'/name
     if p.exists():
@@ -109,9 +114,9 @@ for name in ['LICENSE','NOTICE','LICENSE.html']:
 shutil.copy2(ROOT/'LICENSE',NOTICES/'Anasing-AGPL-3.0.txt')
 shutil.copy2(ROOT/'THIRD_PARTY_NOTICES.md',NOTICES/'THIRD_PARTY_NOTICES.md')
 if (ROOT/'docs/THIRD_PARTY_SOURCES.json').exists():shutil.copy2(ROOT/'docs/THIRD_PARTY_SOURCES.json',NOTICES/'THIRD_PARTY_SOURCES.json')
-(RES/'bundle-manifest.json').write_text(json.dumps({'python':'3.12.15+20261013','platform':'arm64-apple-macosx26.6.2','libreoffice':'26.8.1','homebrew_components':manifest,'relocations':patches},indent=2))
-# This artifact intentionally declares the maximum minimum OS of its bundled Homebrew engines.
-info=plistlib.loads((CONTENTS/'Info.plist').read_bytes());info['LSMinimumSystemVersion']='26.6.2'
+(RES/'bundle-manifest.json').write_text(json.dumps({'python':'3.12.15+20261013','platform':'arm64-apple-macosx26.0','libreoffice':'26.8.1','homebrew_components':manifest,'relocations':patches},indent=2))
+# The audit checks every bundled executable and library against the declared minimum.
+info=plistlib.loads((CONTENTS/'Info.plist').read_bytes());info['LSMinimumSystemVersion']='26.0'
 (CONTENTS/'Info.plist').write_bytes(plistlib.dumps(info))
 # Remove cached development signatures; the containing app is re-signed after relocation.
 for path in reversed(list(copied.values())):run(['/usr/bin/codesign','--force','--sign','-',path])
